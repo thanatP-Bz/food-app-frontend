@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
-import { useAuth0 } from "@auth0/auth0-react";
+import { LogoutOptions, useAuth0 } from "@auth0/auth0-react";
 
 import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
@@ -36,7 +36,9 @@ const UserNameMenu = () => {
         <Separator />
         <DropdownMenuItem>
           <Button
-            onClick={() => logout()}
+            onClick={() =>
+              logout({ returnTo: window.location.origin } as LogoutOptions)
+            }
             className="flex flex-1 font-bold bg-orange-500"
           >
             Log Out

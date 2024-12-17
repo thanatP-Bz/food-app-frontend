@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Layouts from "./layouts/Layout";
 import Homepage from "./pages/Homepage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 const AppRoutes = () => {
   return (
@@ -9,13 +10,20 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <Layouts>
+          <Layouts showHero>
             <Homepage />
           </Layouts>
         }
       />
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
-      <Route path="/user-profile" element={<span>USER PROFILE PAGE</span>} />
+      <Route
+        path="/user-profile"
+        element={
+          <Layouts>
+            <UserProfilePage />
+          </Layouts>
+        }
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
